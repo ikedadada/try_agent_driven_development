@@ -1,0 +1,13 @@
+1. 
+```
+# 目的
+Github CopilotのAgent Modeを使ってみる。
+
+# タスク
+maven+Jettyを使って最小構成のWebAPIを構築し、Hello WorldなAPIを作成する
+
+# 制限
+- 可能な限りファイルへの直接入力は行わない
+（mavenプロジェクトの作成は直接入力ではなくmvnコマンドによる作成を推奨する）
+- 各試行の記録をREADME.mdに記載し、どのようにGithub CopilotがこのAPIを作成したかわかるようにする。
+```
