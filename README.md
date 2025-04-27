@@ -32,3 +32,21 @@ mvn compile exec:java -Dexec.mainClass="com.example.App"
 ```
 
 - ブラウザや curl で http://localhost:8080/hello にアクセスし、`Hello World`が表示されることを確認。
+
+## 実行可能 jar（fat jar）の作成と実行
+
+### ビルド
+
+```
+mvn clean package
+```
+
+`target/hello-jetty-1.0-SNAPSHOT.jar` が生成されます。
+
+### 実行
+
+```
+java -jar target/hello-jetty-1.0-SNAPSHOT.jar
+```
+
+Jetty サーバが起動し、API が利用可能になります。
