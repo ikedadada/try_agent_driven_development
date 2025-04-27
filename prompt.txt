@@ -24,3 +24,19 @@ jarファイルによるビルド物の作成と実行を行えるようにす�
 # 制限
 実行ごとに必要があればREADME.mdを修正する
 ```
+
+3.
+```
+# 前提
+前回までの実行の内容はprompt.txtを確認すること
+
+# 目的
+- Content-Type: application/jsonでの通信がおこなえるようになること
+  - {"message": "Hello World"} を返却すること
+  - JSONは文字列で扱わず、Objectをjson文字列に変換すること
+
+queryParams: nameを受け取って、nameが指定されていたら"Hello :name:"としてnameの値を返却できるようにすること
+
+# 制限
+実行ごとに必要があればREADME.mdを修正する
+```

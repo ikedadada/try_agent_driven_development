@@ -33,6 +33,14 @@ mvn compile exec:java -Dexec.mainClass="com.example.App"
 
 - ブラウザや curl で http://localhost:8080/hello にアクセスし、`Hello World`が表示されることを確認。
 
+## JSON 形式でのレスポンス強化・クエリパラメータ対応
+
+- Jackson を導入し、Java オブジェクトを JSON 文字列に変換して返却するように`App.java`を修正。
+- `/hello`エンドポイントで`name`クエリパラメータを受け取り、指定があれば`{"message": "Hello :name:"}`、なければ`{"message": "Hello World"}`を返す。
+- 例:
+  - `curl 'http://localhost:8080/hello'` → `{"message":"Hello World"}`
+  - `curl 'http://localhost:8080/hello?name=Copilot'` → `{"message":"Hello Copilot:"}`
+
 ## 実行可能 jar（fat jar）の作成と実行
 
 ### ビルド
