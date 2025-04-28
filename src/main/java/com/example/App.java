@@ -16,7 +16,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Server server = new Server(8080);
+        int port = Config.getPort();
+        Server server = new Server(port);
         ServletContextHandler handler = new ServletContextHandler(ServletContextHandler.NO_SESSIONS);
         handler.setContextPath("/");
         handler.addServlet(new ServletHolder(new HelloServlet()), "/hello");

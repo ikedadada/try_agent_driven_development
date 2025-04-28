@@ -58,3 +58,31 @@ java -jar target/hello-jetty-1.0-SNAPSHOT.jar
 ```
 
 Jetty サーバが起動し、API が利用可能になります。
+
+### 5. 環境ごとのプロパティ切り替え対応
+
+- `src/main/resources`配下に `application-local.properties`, `application-stg.properties`, `application-prd.properties` を作成し、各環境ごとに `port` を指定。
+- `pom.xml` に Apache Commons Configuration の依存を追加。
+- `Config.java` を新規作成し、`-Denv=local|stg|prd` で環境を切り替え、該当プロパティファイルから値を取得できるようにした。
+- `App.java` で `Config.getPort()` を使い、環境ごとに Listen するポートを切り替え。
+
+#### 実行例
+
+- デフォルト（local）
+  ```
+  java -jar target/hello-jetty-1.0-SNAPSHOT.jar
+  # → application-local.properties の port で起動
+  ```
+- stg 環境
+  ```
+  java -Denv=stg -jar target/hello-jetty-1.0-SNAPSHOT.jar
+  # → application-stg.properties の port で起動
+  ```
+- prd 環境
+
+  ```
+  java -Denv=prd -jar target/hello-jetty-1.0-SNAPSHOT.jar
+  # → application-prd.properties の port で起動
+  ```
+
+- 他クラスからは `Config.getPort()` でポート番号、`Config.getEnv()` で現在の環境名を取得可能。
