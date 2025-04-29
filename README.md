@@ -86,3 +86,48 @@ Jetty サーバが起動し、API が利用可能になります。
   ```
 
 - 他クラスからは `Config.getPort()` でポート番号、`Config.getEnv()` で現在の環境名を取得可能。
+
+## ユーザー管理 API (CRUD) の追加
+
+### 概要
+
+- `/users` エンドポイントを追加し、ユーザー（id, name, email）をメモリ上で管理するシンプルな REST API を実装。
+- `User.java` エンティティを新規作成。
+- `App.java` に `UserServlet` を追加し、CRUD（GET, POST, PUT, DELETE）を実装。
+- ID は UUID（Java 標準の `java.util.UUID`）で自動生成。
+- Jackson で JSON シリアライズ/デシリアライズ。
+
+### 使い方例
+
+#### ユーザー一覧取得
+
+```
+curl -X GET http://localhost:8080/users
+```
+
+#### ユーザー新規作成
+
+```
+curl -X POST http://localhost:8080/users -H 'Content-Type: application/json' -d '{"name":"Taro","email":"taro@example.com"}'
+```
+
+#### ユーザー取得（ID 指定）
+
+```
+curl -X GET http://localhost:8080/users/{id}
+```
+
+#### ユーザー更新
+
+```
+curl -X PUT http://localhost:8080/users/{id} -H 'Content-Type: application/json' -d '{"name":"Hanako","email":"hanako@example.com"}'
+```
+
+#### ユーザー削除
+
+```
+curl -X DELETE http://localhost:8080/users/{id}
+```
+
+- データはメモリ上のみで永続化されません。
+- UUID は自動生成されます。
